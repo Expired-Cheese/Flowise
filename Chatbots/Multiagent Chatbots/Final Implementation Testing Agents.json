@@ -1,0 +1,4864 @@
+{
+  "nodes": [
+    {
+      "id": "startAgentflow_0",
+      "type": "agentFlow",
+      "position": {
+        "x": 100,
+        "y": 100
+      },
+      "data": {
+        "id": "startAgentflow_0",
+        "label": "Start",
+        "version": 1.1,
+        "name": "startAgentflow",
+        "type": "Start",
+        "color": "#7EE787",
+        "hideInput": true,
+        "baseClasses": [
+          "Start"
+        ],
+        "category": "Agent Flows",
+        "description": "Starting point of the agentflow",
+        "inputParams": [
+          {
+            "label": "Input Type",
+            "name": "startInputType",
+            "type": "options",
+            "options": [
+              {
+                "label": "Chat Input",
+                "name": "chatInput",
+                "description": "Start the conversation with chat input"
+              },
+              {
+                "label": "Form Input",
+                "name": "formInput",
+                "description": "Start the workflow with form inputs"
+              }
+            ],
+            "default": "chatInput",
+            "id": "startAgentflow_0-input-startInputType-options",
+            "display": true
+          },
+          {
+            "label": "Form Title",
+            "name": "formTitle",
+            "type": "string",
+            "placeholder": "Please Fill Out The Form",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "id": "startAgentflow_0-input-formTitle-string",
+            "display": false
+          },
+          {
+            "label": "Form Description",
+            "name": "formDescription",
+            "type": "string",
+            "placeholder": "Complete all fields below to continue",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "id": "startAgentflow_0-input-formDescription-string",
+            "display": false
+          },
+          {
+            "label": "Form Input Types",
+            "name": "formInputTypes",
+            "description": "Specify the type of form input",
+            "type": "array",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "array": [
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Options",
+                    "name": "options"
+                  }
+                ],
+                "default": "string"
+              },
+              {
+                "label": "Label",
+                "name": "label",
+                "type": "string",
+                "placeholder": "Label for the input"
+              },
+              {
+                "label": "Variable Name",
+                "name": "name",
+                "type": "string",
+                "placeholder": "Variable name for the input (must be camel case)",
+                "description": "Variable name must be camel case. For example: firstName, lastName, etc."
+              },
+              {
+                "label": "Add Options",
+                "name": "addOptions",
+                "type": "array",
+                "show": {
+                  "formInputTypes[$index].type": "options"
+                },
+                "array": [
+                  {
+                    "label": "Option",
+                    "name": "option",
+                    "type": "string"
+                  }
+                ]
+              }
+            ],
+            "id": "startAgentflow_0-input-formInputTypes-array",
+            "display": false
+          },
+          {
+            "label": "Ephemeral Memory",
+            "name": "startEphemeralMemory",
+            "type": "boolean",
+            "description": "Start fresh for every execution without past chat history",
+            "optional": true,
+            "id": "startAgentflow_0-input-startEphemeralMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Flow State",
+            "name": "startState",
+            "description": "Runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string",
+                "placeholder": "Foo"
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "placeholder": "Bar",
+                "optional": true
+              }
+            ],
+            "id": "startAgentflow_0-input-startState-array",
+            "display": true
+          },
+          {
+            "label": "Persist State",
+            "name": "startPersistState",
+            "type": "boolean",
+            "description": "Persist the state in the same session",
+            "optional": true,
+            "id": "startAgentflow_0-input-startPersistState-boolean",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "startInputType": "chatInput",
+          "startEphemeralMemory": "",
+          "startState": [
+            {
+              "key": "student_model",
+              "value": "{\"bloom_level\": \"unknown\",  \"misconceptions\": [],  \"attempt_count\": 0,  \"hint_level\": 0,  \"confidence\": 0.0}"
+            },
+            {
+              "key": "tutor_analysis",
+              "value": ""
+            },
+            {
+              "key": "pedagogy_strategy",
+              "value": ""
+            }
+          ],
+          "startPersistState": true
+        },
+        "outputAnchors": [
+          {
+            "id": "startAgentflow_0-output-startAgentflow",
+            "label": "Start",
+            "name": "startAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 103,
+      "height": 66,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 100,
+        "y": 100
+      }
+    },
+    {
+      "id": "llmAgentflow_0",
+      "position": {
+        "x": 254.94974794072095,
+        "y": 96.69194648834093
+      },
+      "data": {
+        "id": "llmAgentflow_0",
+        "label": "Student Evaluator",
+        "version": 1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_0-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_0-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_0-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_0-input-llmMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_0-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_0-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_0-input-llmUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_0-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "hideCodeExecute": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_0-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_0-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatOpenAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "<p>You are the Student Evaluation Agent in a mechanical engineering tutoring system.</p><p>Your job is to analyze a student's question and estimate:</p><p>1) The student's current Bloom's taxonomy level</p><p>2) Their conceptual understanding</p><p>3) Possible misconceptions</p><p>4) The engineering domain of the problem</p><p>Do NOT solve the problem.</p><p>Return ONLY valid JSON.</p><p>JSON schema:</p><p>{</p><p> \"problem_domain\": \"mechanical | electrical | general\",</p><p> \"student_bloom_level\": \"remember | understand | apply | analyze | evaluate | create\",</p><p> \"misconceptions\": [],</p><p> \"difficulty\": \"easy | medium | hard\"</p><p>}</p>"
+            }
+          ],
+          "llmEnableMemory": true,
+          "llmMemoryType": "allMessages",
+          "llmUserMessage": "<p>Student Question:<br><span class=\"variable\" data-type=\"mention\" data-id=\"question\" data-label=\"question\">{{ question }}</span> </p><p>Student Model:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.student_model\" data-label=\"$flow.state.student_model\">{{ $flow.state.student_model }}</span> </p>",
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": [
+            {
+              "key": "problem_domain",
+              "type": "enum",
+              "enumValues": "mechanical, electrical, general",
+              "jsonSchema": "",
+              "description": "what engineering domain the problem belongs to"
+            },
+            {
+              "key": "student_bloom_level",
+              "type": "enum",
+              "enumValues": "remember, understand, apply, analyze, evaluate, create",
+              "jsonSchema": "",
+              "description": "what bloom taxonomy level the student is exhibiting"
+            },
+            {
+              "key": "misconceptions",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "what misconceptions the student is demonstrating"
+            },
+            {
+              "key": "difficulty",
+              "type": "enum",
+              "enumValues": "easy, medium, hard",
+              "jsonSchema": "",
+              "description": "how challenging is the question to solve"
+            }
+          ],
+          "llmUpdateState": [],
+          "llmModelConfig": {
+            "cache": "",
+            "modelName": "gpt-4o-mini",
+            "temperature": "0.2",
+            "streaming": true,
+            "maxTokens": "",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "proxyUrl": "",
+            "baseOptions": "",
+            "allowImageUploads": true,
+            "imageResolution": "low",
+            "reasoning": "",
+            "llmModel": "chatOpenAI"
+          }
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_0-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 187,
+      "height": 72,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 254.94974794072095,
+        "y": 96.69194648834093
+      },
+      "dragging": false
+    },
+    {
+      "id": "llmAgentflow_1",
+      "position": {
+        "x": 499.9033127178287,
+        "y": 96.69194648834093
+      },
+      "data": {
+        "id": "llmAgentflow_1",
+        "label": "Student Model Updater",
+        "version": 1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_1-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_1-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_1-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_1-input-llmMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_1-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_1-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_1-input-llmUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_1-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "hideCodeExecute": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_1-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_1-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatOpenAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "<p>You update the persistent student learning model.</p><p>Input:</p><p>Previous student model</p><p>Evaluation results</p><p>Update the model.</p><p>Rules:</p><p>- Increment attempt_count</p><p>- Update bloom_level if necessary</p><p>- Add misconceptions if identified</p><p>- Increase hint_level if student struggles</p><p>Return ONLY JSON.</p><p>Schema:</p><p>{</p><p> \"bloom_level\": \"\",</p><p> \"misconceptions\": [],</p><p> \"attempt_count\": 0,</p><p> \"hint_level\": 0,</p><p> \"confidence\": 0.0</p><p>}</p>"
+            }
+          ],
+          "llmEnableMemory": true,
+          "llmMemoryType": "allMessages",
+          "llmUserMessage": "<p>Previous Model:<br><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.student_model\" data-label=\"$flow.state.student_model\">{{ $flow.state.student_model }}</span></p><p>Evaluation:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"llmAgentflow_0\" data-label=\"llmAgentflow_0\">{{ llmAgentflow_0 }}</span> </p><p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.student_model\" data-label=\"$flow.state.student_model\">{{ $flow.state.student_model }}</span></p>",
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": [
+            {
+              "key": "bloom_level",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "current student bloom taxonomy level"
+            },
+            {
+              "key": "misconceptions",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "what misconceptions the student is currently exhibiting"
+            },
+            {
+              "key": "attempt_count",
+              "type": "number",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "how many attempts has the user given towards the same question"
+            },
+            {
+              "key": "hint_level",
+              "type": "number",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "how important is a hint required to assist the student"
+            },
+            {
+              "key": "confidence",
+              "type": "number",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "how confident is the LLM on this assessment on a scale from 0 to 1"
+            }
+          ],
+          "llmUpdateState": [
+            {
+              "key": "student_model",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output\" data-label=\"output\">{{ output }}</span> </p>"
+            }
+          ],
+          "llmModelConfig": {
+            "cache": "",
+            "modelName": "gpt-4o-mini",
+            "temperature": "0.9",
+            "streaming": true,
+            "maxTokens": "",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "proxyUrl": "",
+            "baseOptions": "",
+            "allowImageUploads": true,
+            "imageResolution": "low",
+            "reasoning": "",
+            "llmModel": "chatOpenAI"
+          }
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_1-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 223,
+      "height": 72,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 499.9033127178287,
+        "y": 96.69194648834093
+      },
+      "dragging": false
+    },
+    {
+      "id": "llmAgentflow_2",
+      "position": {
+        "x": 783.1342747677098,
+        "y": 97.07152452891279
+      },
+      "data": {
+        "id": "llmAgentflow_2",
+        "label": "Supervisor Router",
+        "version": 1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_2-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_2-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_2-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_2-input-llmMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_2-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_2-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_2-input-llmUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_2-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "hideCodeExecute": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_2-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_2-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatOpenAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "<p>You are the Supervisor Router.</p><p>Your job is to determine which tutor should analyze the problem.</p><p>Possible tutors:</p><p>mechanical</p><p>electrical</p><p>general</p><p>Return JSON only:</p><p>{</p><p> \"selected_tutor\": \"\"</p><p>}</p>"
+            }
+          ],
+          "llmEnableMemory": true,
+          "llmMemoryType": "allMessages",
+          "llmUserMessage": "<p>Student Question:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"question\" data-label=\"question\">{{ question }}</span> </p><p>Evaluation:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"llmAgentflow_0\" data-label=\"llmAgentflow_0\">{{ llmAgentflow_0 }}</span> </p>",
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": [
+            {
+              "key": "selected_tutor",
+              "type": "enum",
+              "enumValues": "mechanical, electrical, general",
+              "jsonSchema": "",
+              "description": "which tutor should be called based on the user's quesion"
+            }
+          ],
+          "llmUpdateState": [],
+          "llmModelConfig": {
+            "cache": "",
+            "modelName": "gpt-4o-mini",
+            "temperature": 0.9,
+            "streaming": true,
+            "maxTokens": "",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "proxyUrl": "",
+            "baseOptions": "",
+            "allowImageUploads": true,
+            "imageResolution": "low",
+            "reasoning": "",
+            "llmModel": "chatOpenAI"
+          }
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_2-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 189,
+      "height": 72,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 783.1342747677098,
+        "y": 97.07152452891279
+      }
+    },
+    {
+      "id": "conditionAgentflow_0",
+      "position": {
+        "x": 1057.3639958684491,
+        "y": 83.15063002995504
+      },
+      "data": {
+        "id": "conditionAgentflow_0",
+        "label": "Domain Routing",
+        "version": 1,
+        "name": "conditionAgentflow",
+        "type": "Condition",
+        "color": "#FFB938",
+        "baseClasses": [
+          "Condition"
+        ],
+        "category": "Agent Flows",
+        "description": "Split flows based on If Else conditions",
+        "inputParams": [
+          {
+            "label": "Conditions",
+            "name": "conditions",
+            "type": "array",
+            "description": "Values to compare",
+            "acceptVariable": true,
+            "default": [
+              {
+                "type": "string",
+                "value1": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"llmAgentflow_2\" data-label=\"llmAgentflow_2\">{{ llmAgentflow_2 }}</span> </p>",
+                "operation": "contains",
+                "value2": "<p>mechanical</p>"
+              }
+            ],
+            "array": [
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  }
+                ],
+                "default": "string"
+              },
+              {
+                "label": "Value 1",
+                "name": "value1",
+                "type": "string",
+                "default": "",
+                "description": "First value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "string"
+                }
+              },
+              {
+                "label": "Operation",
+                "name": "operation",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "Contains",
+                    "name": "contains"
+                  },
+                  {
+                    "label": "Ends With",
+                    "name": "endsWith"
+                  },
+                  {
+                    "label": "Equal",
+                    "name": "equal"
+                  },
+                  {
+                    "label": "Not Contains",
+                    "name": "notContains"
+                  },
+                  {
+                    "label": "Not Equal",
+                    "name": "notEqual"
+                  },
+                  {
+                    "label": "Regex",
+                    "name": "regex"
+                  },
+                  {
+                    "label": "Starts With",
+                    "name": "startsWith"
+                  },
+                  {
+                    "label": "Is Empty",
+                    "name": "isEmpty"
+                  },
+                  {
+                    "label": "Not Empty",
+                    "name": "notEmpty"
+                  }
+                ],
+                "default": "equal",
+                "description": "Type of operation",
+                "show": {
+                  "conditions[$index].type": "string"
+                }
+              },
+              {
+                "label": "Value 2",
+                "name": "value2",
+                "type": "string",
+                "default": "",
+                "description": "Second value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "string"
+                },
+                "hide": {
+                  "conditions[$index].operation": [
+                    "isEmpty",
+                    "notEmpty"
+                  ]
+                }
+              },
+              {
+                "label": "Value 1",
+                "name": "value1",
+                "type": "number",
+                "default": "",
+                "description": "First value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "number"
+                }
+              },
+              {
+                "label": "Operation",
+                "name": "operation",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "Smaller",
+                    "name": "smaller"
+                  },
+                  {
+                    "label": "Smaller Equal",
+                    "name": "smallerEqual"
+                  },
+                  {
+                    "label": "Equal",
+                    "name": "equal"
+                  },
+                  {
+                    "label": "Not Equal",
+                    "name": "notEqual"
+                  },
+                  {
+                    "label": "Larger",
+                    "name": "larger"
+                  },
+                  {
+                    "label": "Larger Equal",
+                    "name": "largerEqual"
+                  },
+                  {
+                    "label": "Is Empty",
+                    "name": "isEmpty"
+                  },
+                  {
+                    "label": "Not Empty",
+                    "name": "notEmpty"
+                  }
+                ],
+                "default": "equal",
+                "description": "Type of operation",
+                "show": {
+                  "conditions[$index].type": "number"
+                }
+              },
+              {
+                "label": "Value 2",
+                "name": "value2",
+                "type": "number",
+                "default": 0,
+                "description": "Second value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "number"
+                }
+              },
+              {
+                "label": "Value 1",
+                "name": "value1",
+                "type": "boolean",
+                "default": false,
+                "description": "First value to be compared with",
+                "show": {
+                  "conditions[$index].type": "boolean"
+                }
+              },
+              {
+                "label": "Operation",
+                "name": "operation",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "Equal",
+                    "name": "equal"
+                  },
+                  {
+                    "label": "Not Equal",
+                    "name": "notEqual"
+                  }
+                ],
+                "default": "equal",
+                "description": "Type of operation",
+                "show": {
+                  "conditions[$index].type": "boolean"
+                }
+              },
+              {
+                "label": "Value 2",
+                "name": "value2",
+                "type": "boolean",
+                "default": false,
+                "description": "Second value to be compared with",
+                "show": {
+                  "conditions[$index].type": "boolean"
+                }
+              }
+            ],
+            "id": "conditionAgentflow_0-input-conditions-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "conditions": [
+            {
+              "type": "string",
+              "value1": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"llmAgentflow_2\" data-label=\"llmAgentflow_2\">{{ llmAgentflow_2 }}</span> </p>",
+              "operation": "contains",
+              "value2": "<p>mechanical</p>"
+            },
+            {
+              "type": "string",
+              "value1": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"llmAgentflow_2\" data-label=\"llmAgentflow_2\">{{ llmAgentflow_2 }}</span> &nbsp;</p>",
+              "operation": "contains",
+              "value2": "<p>electrical</p>"
+            }
+          ]
+        },
+        "outputAnchors": [
+          {
+            "id": "conditionAgentflow_0-output-0",
+            "label": 0,
+            "name": 0,
+            "description": "Condition 0"
+          },
+          {
+            "id": "conditionAgentflow_0-output-1",
+            "label": 1,
+            "name": 1,
+            "description": "Condition 1"
+          },
+          {
+            "id": "conditionAgentflow_0-output-2",
+            "label": 2,
+            "name": 2,
+            "description": "Else"
+          }
+        ],
+        "outputs": {
+          "conditionAgentflow": ""
+        },
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 175,
+      "height": 100,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1057.3639958684491,
+        "y": 83.15063002995504
+      },
+      "dragging": false
+    },
+    {
+      "id": "llmAgentflow_3",
+      "position": {
+        "x": 1309.8970306279225,
+        "y": 12.243628245982137
+      },
+      "data": {
+        "id": "llmAgentflow_3",
+        "label": "Mechanical Tutor",
+        "version": 1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_3-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_3-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_3-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_3-input-llmMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_3-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_3-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_3-input-llmUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_3-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "hideCodeExecute": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_3-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_3-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatOpenAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "<p>You are the Mechanical Engineering Tutor Agent.</p><p>You analyze mechanical engineering problems.</p><p>You must NOT solve the problem.</p><p>Your job is to determine the conceptual steps required.</p><p>Return JSON only.</p><p>{</p><p> \"problem_type\": \"\",</p><p> \"required_concepts\": [],</p><p> \"solution_steps\": [],</p><p> \"diagnosed_gap\": \"\",</p><p> \"recommended_hint_strategy\": \"\"</p><p>}</p>"
+            }
+          ],
+          "llmEnableMemory": true,
+          "llmMemoryType": "allMessages",
+          "llmUserMessage": "<p>Student Question:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"question\" data-label=\"question\">{{ question }}</span> </p><p>Student Model:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.student_model\" data-label=\"$flow.state.student_model\">{{ $flow.state.student_model }}</span> </p>",
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": [
+            {
+              "key": "problem_type",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "what kind of problem the user is asking"
+            },
+            {
+              "key": "required_concepts",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "what technical concepts are needed to solve the problem"
+            },
+            {
+              "key": "solution_steps",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "what are the steps needed to solve the problem"
+            },
+            {
+              "key": "diagnosed_gap",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "what gaps in conceptual understanding to the problem has the student shown"
+            },
+            {
+              "key": "recommended_hint_strategy",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "what hint strategy should be used to best guide the student"
+            }
+          ],
+          "llmUpdateState": [
+            {
+              "key": "tutor_analysis",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output\" data-label=\"output\">{{ output }}</span> </p>"
+            }
+          ],
+          "llmModelConfig": {
+            "cache": "",
+            "modelName": "gpt-4o-mini",
+            "temperature": 0.9,
+            "streaming": true,
+            "maxTokens": "",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "proxyUrl": "",
+            "baseOptions": "",
+            "allowImageUploads": true,
+            "imageResolution": "low",
+            "reasoning": "",
+            "llmModel": "chatOpenAI"
+          }
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_3-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 185,
+      "height": 72,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1309.8970306279225,
+        "y": 12.243628245982137
+      },
+      "dragging": false
+    },
+    {
+      "id": "llmAgentflow_4",
+      "position": {
+        "x": 1310.9039247408118,
+        "y": 97.33203038674958
+      },
+      "data": {
+        "id": "llmAgentflow_4",
+        "label": "Electrical Tutor",
+        "version": 1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_4-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_4-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_4-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_4-input-llmMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_4-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_4-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_4-input-llmUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_4-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "hideCodeExecute": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_4-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_4-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatOpenAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "<p>You are the Electrical Engineering Tutor Agent.</p><p>You analyze electrical engineering problems.</p><p>You must NOT solve the problem.</p><p>Your job is to determine the conceptual steps required.</p><p>Return JSON only.</p><p>{</p><p>\"problem_type\": \"\",</p><p>\"required_concepts\": [],</p><p>\"solution_steps\": [],</p><p>\"diagnosed_gap\": \"\",</p><p>\"recommended_hint_strategy\": \"\"</p><p>}</p>"
+            }
+          ],
+          "llmEnableMemory": true,
+          "llmMemoryType": "allMessages",
+          "llmUserMessage": "<p>Student Question:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"question\" data-label=\"question\">{{ question }}</span> </p><p>Student Model:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.student_model\" data-label=\"$flow.state.student_model\">{{ $flow.state.student_model }}</span> </p>",
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": [
+            {
+              "key": "problem_type",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "what kind of problem the user is asking"
+            },
+            {
+              "key": "required_concepts",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "what technical concepts are needed to solve the problem"
+            },
+            {
+              "key": "solution_steps",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "what are the steps needed to solve the problem"
+            },
+            {
+              "key": "diagnosed_gap",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "what gaps in conceptual understanding to the problem has the student shown"
+            },
+            {
+              "key": "recommended_hint_strategy",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "what hint strategy should be used to best guide the student"
+            }
+          ],
+          "llmUpdateState": [
+            {
+              "key": "tutor_analysis",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output\" data-label=\"output\">{{ output }}</span> </p>"
+            }
+          ],
+          "llmModelConfig": {
+            "cache": "",
+            "modelName": "gpt-4o-mini",
+            "temperature": 0.9,
+            "streaming": true,
+            "maxTokens": "",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "proxyUrl": "",
+            "baseOptions": "",
+            "allowImageUploads": true,
+            "imageResolution": "low",
+            "reasoning": "",
+            "llmModel": "chatOpenAI"
+          }
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_4-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 175,
+      "height": 72,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1310.9039247408118,
+        "y": 97.33203038674958
+      },
+      "dragging": false
+    },
+    {
+      "id": "llmAgentflow_5",
+      "position": {
+        "x": 1310.0015190320983,
+        "y": 181.00229249183758
+      },
+      "data": {
+        "id": "llmAgentflow_5",
+        "label": "General Tutor",
+        "version": 1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_5-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_5-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_5-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_5-input-llmMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_5-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_5-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_5-input-llmUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_5-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "hideCodeExecute": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_5-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_5-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatOpenAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "<p>You are the General Engineering Tutor Agent.</p><p>You analyze general engineering problems.</p><p>You must NOT solve the problem.</p><p>Your job is to determine the conceptual steps required.</p><p>Return JSON only.</p><p>{</p><p>\"problem_type\": \"\",</p><p>\"required_concepts\": [],</p><p>\"solution_steps\": [],</p><p>\"diagnosed_gap\": \"\",</p><p>\"recommended_hint_strategy\": \"\"</p><p>}</p>"
+            }
+          ],
+          "llmEnableMemory": true,
+          "llmMemoryType": "allMessages",
+          "llmUserMessage": "<p>Student Question:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"question\" data-label=\"question\">{{ question }}</span> </p><p>Student Model:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.student_model\" data-label=\"$flow.state.student_model\">{{ $flow.state.student_model }}</span> </p>",
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": [
+            {
+              "key": "problem_type",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "what kind of problem the user is asking"
+            },
+            {
+              "key": "required_concepts",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "what technical concepts are needed to solve the problem"
+            },
+            {
+              "key": "solution_steps",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "what are the steps needed to solve the problem"
+            },
+            {
+              "key": "diagnosed_gap",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "what gaps in conceptual understanding to the problem has the student shown"
+            },
+            {
+              "key": "recommended_hint_strategy",
+              "type": "string",
+              "enumValues": "",
+              "jsonSchema": "",
+              "description": "what hint strategy should be used to best guide the student"
+            }
+          ],
+          "llmUpdateState": [
+            {
+              "key": "tutor_analysis",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output\" data-label=\"output\">{{ output }}</span> </p>"
+            }
+          ],
+          "llmModelConfig": {
+            "cache": "",
+            "modelName": "gpt-4o-mini",
+            "temperature": 0.9,
+            "streaming": true,
+            "maxTokens": "",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "proxyUrl": "",
+            "baseOptions": "",
+            "allowImageUploads": true,
+            "imageResolution": "low",
+            "reasoning": "",
+            "llmModel": "chatOpenAI"
+          }
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_5-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 175,
+      "height": 72,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1310.0015190320983,
+        "y": 181.00229249183758
+      },
+      "dragging": false
+    },
+    {
+      "id": "llmAgentflow_6",
+      "position": {
+        "x": 1608.9825720890676,
+        "y": 97.41975483759833
+      },
+      "data": {
+        "id": "llmAgentflow_6",
+        "label": "Pedagogy Controller",
+        "version": 1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_6-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_6-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_6-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_6-input-llmMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_6-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_6-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_6-input-llmUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_6-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "hideCodeExecute": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_6-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_6-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatOpenAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "<p>You are the Pedagogical Strategy Agent.</p><p>You decide how much help to provide.</p><p>Inputs:</p><p>Student model</p><p>Tutor reasoning</p><p>Never reveal the answer.</p><p>Choose strategy:</p><p>ask_guiding_question</p><p>give_concept_hint</p><p>give_process_hint</p><p>suggest_next_step</p><p>Return JSON:</p><p>{</p><p>\"strategy\": \"\",</p><p>}</p>"
+            }
+          ],
+          "llmEnableMemory": true,
+          "llmMemoryType": "allMessages",
+          "llmUserMessage": "<p>Student Model:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.student_model\" data-label=\"$flow.state.student_model\">{{ $flow.state.student_model }}</span> </p><p>Tutor Analysis:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.tutor_analysis\" data-label=\"$flow.state.tutor_analysis\">{{ $flow.state.tutor_analysis }}</span> </p>",
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": [
+            {
+              "key": "strategy",
+              "type": "enum",
+              "enumValues": "ask_guiding_question, give_concept_hint, give_process_hint, suggest_next_step",
+              "jsonSchema": "",
+              "description": "what strategy should be used to guide the student"
+            }
+          ],
+          "llmUpdateState": [
+            {
+              "key": "pedagogy_strategy",
+              "value": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"output.strategy\" data-label=\"output.strategy\">{{ output.strategy }}</span> </p>"
+            }
+          ],
+          "llmModelConfig": {
+            "cache": "",
+            "modelName": "gpt-4o-mini",
+            "temperature": 0.9,
+            "streaming": true,
+            "maxTokens": "",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "proxyUrl": "",
+            "baseOptions": "",
+            "allowImageUploads": true,
+            "imageResolution": "low",
+            "reasoning": "",
+            "llmModel": "chatOpenAI"
+          }
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_6-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 206,
+      "height": 72,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 1608.9825720890676,
+        "y": 97.41975483759833
+      }
+    },
+    {
+      "id": "llmAgentflow_7",
+      "position": {
+        "x": 2067.113069825508,
+        "y": 142.37250132472204
+      },
+      "data": {
+        "id": "llmAgentflow_7",
+        "label": "Socratic Process Helper",
+        "version": 1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_7-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_7-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_7-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_7-input-llmMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_7-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_7-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_7-input-llmUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_7-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "hideCodeExecute": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_7-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_7-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatOpenAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "<p>You generate hints for engineering students.</p><p>Rules:</p><p>Never reveal the final answer.</p><p>Provide only the hint needed.</p><p>Encourage the student to reason.</p><p>Use the tutor analysis and pedagogy strategy.</p>"
+            }
+          ],
+          "llmEnableMemory": true,
+          "llmMemoryType": "allMessages",
+          "llmUserMessage": "<p>Student Question:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"question\" data-label=\"question\">{{ question }}</span> </p><p>Tutor Analysis:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.tutor_analysis\" data-label=\"$flow.state.tutor_analysis\">{{ $flow.state.tutor_analysis }}</span> </p><p>Strategy:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.pedagogy_strategy\" data-label=\"$flow.state.pedagogy_strategy\">{{ $flow.state.pedagogy_strategy }}</span> </p>",
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": "",
+          "llmUpdateState": "",
+          "llmModelConfig": {
+            "cache": "",
+            "modelName": "gpt-4o-mini",
+            "temperature": 0.9,
+            "streaming": true,
+            "maxTokens": "",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "proxyUrl": "",
+            "baseOptions": "",
+            "allowImageUploads": true,
+            "imageResolution": "low",
+            "reasoning": "",
+            "llmModel": "chatOpenAI"
+          },
+          "undefined": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_7-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 229,
+      "height": 72,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 2067.113069825508,
+        "y": 142.37250132472204
+      },
+      "dragging": false
+    },
+    {
+      "id": "conditionAgentflow_1",
+      "position": {
+        "x": 1850.7128119286726,
+        "y": 74.80829296280544
+      },
+      "data": {
+        "id": "conditionAgentflow_1",
+        "label": "Socratic Router",
+        "version": 1,
+        "name": "conditionAgentflow",
+        "type": "Condition",
+        "color": "#FFB938",
+        "baseClasses": [
+          "Condition"
+        ],
+        "category": "Agent Flows",
+        "description": "Split flows based on If Else conditions",
+        "inputParams": [
+          {
+            "label": "Conditions",
+            "name": "conditions",
+            "type": "array",
+            "description": "Values to compare",
+            "acceptVariable": true,
+            "default": [
+              {
+                "type": "string",
+                "value1": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.hint_needed\" data-label=\"$flow.state.hint_needed\">{{ $flow.state.hint_needed }}</span> </p>",
+                "operation": "equal",
+                "value2": "<p>true</p>"
+              }
+            ],
+            "array": [
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  }
+                ],
+                "default": "string"
+              },
+              {
+                "label": "Value 1",
+                "name": "value1",
+                "type": "string",
+                "default": "",
+                "description": "First value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "string"
+                }
+              },
+              {
+                "label": "Operation",
+                "name": "operation",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "Contains",
+                    "name": "contains"
+                  },
+                  {
+                    "label": "Ends With",
+                    "name": "endsWith"
+                  },
+                  {
+                    "label": "Equal",
+                    "name": "equal"
+                  },
+                  {
+                    "label": "Not Contains",
+                    "name": "notContains"
+                  },
+                  {
+                    "label": "Not Equal",
+                    "name": "notEqual"
+                  },
+                  {
+                    "label": "Regex",
+                    "name": "regex"
+                  },
+                  {
+                    "label": "Starts With",
+                    "name": "startsWith"
+                  },
+                  {
+                    "label": "Is Empty",
+                    "name": "isEmpty"
+                  },
+                  {
+                    "label": "Not Empty",
+                    "name": "notEmpty"
+                  }
+                ],
+                "default": "equal",
+                "description": "Type of operation",
+                "show": {
+                  "conditions[$index].type": "string"
+                }
+              },
+              {
+                "label": "Value 2",
+                "name": "value2",
+                "type": "string",
+                "default": "",
+                "description": "Second value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "string"
+                },
+                "hide": {
+                  "conditions[$index].operation": [
+                    "isEmpty",
+                    "notEmpty"
+                  ]
+                }
+              },
+              {
+                "label": "Value 1",
+                "name": "value1",
+                "type": "number",
+                "default": "",
+                "description": "First value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "number"
+                }
+              },
+              {
+                "label": "Operation",
+                "name": "operation",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "Smaller",
+                    "name": "smaller"
+                  },
+                  {
+                    "label": "Smaller Equal",
+                    "name": "smallerEqual"
+                  },
+                  {
+                    "label": "Equal",
+                    "name": "equal"
+                  },
+                  {
+                    "label": "Not Equal",
+                    "name": "notEqual"
+                  },
+                  {
+                    "label": "Larger",
+                    "name": "larger"
+                  },
+                  {
+                    "label": "Larger Equal",
+                    "name": "largerEqual"
+                  },
+                  {
+                    "label": "Is Empty",
+                    "name": "isEmpty"
+                  },
+                  {
+                    "label": "Not Empty",
+                    "name": "notEmpty"
+                  }
+                ],
+                "default": "equal",
+                "description": "Type of operation",
+                "show": {
+                  "conditions[$index].type": "number"
+                }
+              },
+              {
+                "label": "Value 2",
+                "name": "value2",
+                "type": "number",
+                "default": 0,
+                "description": "Second value to be compared with",
+                "acceptVariable": true,
+                "show": {
+                  "conditions[$index].type": "number"
+                }
+              },
+              {
+                "label": "Value 1",
+                "name": "value1",
+                "type": "boolean",
+                "default": false,
+                "description": "First value to be compared with",
+                "show": {
+                  "conditions[$index].type": "boolean"
+                }
+              },
+              {
+                "label": "Operation",
+                "name": "operation",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "Equal",
+                    "name": "equal"
+                  },
+                  {
+                    "label": "Not Equal",
+                    "name": "notEqual"
+                  }
+                ],
+                "default": "equal",
+                "description": "Type of operation",
+                "show": {
+                  "conditions[$index].type": "boolean"
+                }
+              },
+              {
+                "label": "Value 2",
+                "name": "value2",
+                "type": "boolean",
+                "default": false,
+                "description": "Second value to be compared with",
+                "show": {
+                  "conditions[$index].type": "boolean"
+                }
+              }
+            ],
+            "id": "conditionAgentflow_1-input-conditions-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "conditions": [
+            {
+              "type": "string",
+              "value1": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.pedagogy_strategy\" data-label=\"$flow.state.pedagogy_strategy\">{{ $flow.state.pedagogy_strategy }}</span> </p>",
+              "operation": "equal",
+              "value2": "<p>ask_guiding_question</p>"
+            },
+            {
+              "type": "string",
+              "value1": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.pedagogy_strategy\" data-label=\"$flow.state.pedagogy_strategy\">{{ $flow.state.pedagogy_strategy }}</span> </p>",
+              "operation": "equal",
+              "value2": "<p>give_concept_hint</p>"
+            },
+            {
+              "type": "string",
+              "value1": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.pedagogy_strategy\" data-label=\"$flow.state.pedagogy_strategy\">{{ $flow.state.pedagogy_strategy }}</span> </p>",
+              "operation": "equal",
+              "value2": "<p>give_process_hint</p>"
+            }
+          ]
+        },
+        "outputAnchors": [
+          {
+            "id": "conditionAgentflow_1-output-0",
+            "label": 0,
+            "name": 0,
+            "description": "Condition 0"
+          },
+          {
+            "id": "conditionAgentflow_1-output-1",
+            "label": 1,
+            "name": 1,
+            "description": "Condition 1"
+          },
+          {
+            "id": "conditionAgentflow_1-output-2",
+            "label": 2,
+            "name": 2,
+            "description": "Condition 2"
+          },
+          {
+            "id": "conditionAgentflow_1-output-3",
+            "label": 3,
+            "name": 3,
+            "description": "Else"
+          }
+        ],
+        "outputs": {
+          "conditionAgentflow": ""
+        },
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 172,
+      "height": 120,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 1850.7128119286726,
+        "y": 74.80829296280544
+      }
+    },
+    {
+      "id": "llmAgentflow_8",
+      "position": {
+        "x": 2068.3584897222586,
+        "y": 47.56106390454909
+      },
+      "data": {
+        "id": "llmAgentflow_8",
+        "label": "Concept Builder",
+        "version": 1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_8-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_8-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_8-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_8-input-llmMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_8-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_8-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_8-input-llmUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_8-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "hideCodeExecute": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_8-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_8-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatOpenAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "<p>You teach the student technical concepts that are missing when it comes to solving the problems for engineering students.</p><p>Rules:</p><p>Never reveal the final answer.</p><p>Provide only the knowledge needed.</p><p>Encourage the student to reason.</p><p>Try and be empathetic and encouraging to the user.</p><p>Use the tutor analysis and pedagogy strategy.</p>"
+            }
+          ],
+          "llmEnableMemory": true,
+          "llmMemoryType": "allMessages",
+          "llmUserMessage": "<p>Student Question:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"question\" data-label=\"question\">{{ question }}</span> </p><p>Tutor Analysis:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.tutor_analysis\" data-label=\"$flow.state.tutor_analysis\">{{ $flow.state.tutor_analysis }}</span> </p><p>Strategy:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.pedagogy_strategy\" data-label=\"$flow.state.pedagogy_strategy\">{{ $flow.state.pedagogy_strategy }}</span> </p>",
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": "",
+          "llmUpdateState": "",
+          "llmModelConfig": {
+            "cache": "",
+            "modelName": "gpt-4o-mini",
+            "temperature": 0.9,
+            "streaming": true,
+            "maxTokens": "",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "proxyUrl": "",
+            "baseOptions": "",
+            "allowImageUploads": true,
+            "imageResolution": "low",
+            "reasoning": "",
+            "llmModel": "chatOpenAI"
+          },
+          "undefined": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_8-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 176,
+      "height": 72,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 2068.3584897222586,
+        "y": 47.56106390454909
+      },
+      "dragging": false
+    },
+    {
+      "id": "llmAgentflow_9",
+      "position": {
+        "x": 2064.6332635889644,
+        "y": -57.711259355595516
+      },
+      "data": {
+        "id": "llmAgentflow_9",
+        "label": "Socratic Question",
+        "version": 1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_9-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_9-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_9-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_9-input-llmMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_9-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_9-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_9-input-llmUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_9-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "hideCodeExecute": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_9-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_9-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatOpenAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "<p>You are a Troubleshooting Lead. Your goal is to help the student organize their diagnostic process.</p><p>Rules:</p><p>Never reveal the answer.</p><p>Prioritize Action: Suggest a logical next step in an engineering workflow</p><p>Contextual Flow: If the student has identified a symptom, suggest they look for the cause. If they have a hypothesis, suggest how they might verify it using the provided case study data.</p><p>Keep it Brief: Your role is to point the way, not to do the work. Give them a clear \"compass heading.\"</p>"
+            }
+          ],
+          "llmEnableMemory": true,
+          "llmMemoryType": "allMessages",
+          "llmUserMessage": "<p>Student Question:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"question\" data-label=\"question\">{{ question }}</span> </p><p>Tutor Analysis:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.tutor_analysis\" data-label=\"$flow.state.tutor_analysis\">{{ $flow.state.tutor_analysis }}</span> </p><p>Strategy:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.pedagogy_strategy\" data-label=\"$flow.state.pedagogy_strategy\">{{ $flow.state.pedagogy_strategy }}</span> </p>",
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": "",
+          "llmUpdateState": "",
+          "llmModelConfig": {
+            "cache": "",
+            "modelName": "gpt-4o-mini",
+            "temperature": 0.9,
+            "streaming": true,
+            "maxTokens": "",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "proxyUrl": "",
+            "baseOptions": "",
+            "allowImageUploads": true,
+            "imageResolution": "low",
+            "reasoning": "",
+            "llmModel": "chatOpenAI"
+          },
+          "undefined": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_9-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 188,
+      "height": 72,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 2064.6332635889644,
+        "y": -57.711259355595516
+      },
+      "dragging": false
+    },
+    {
+      "id": "llmAgentflow_10",
+      "position": {
+        "x": 2067.110477498318,
+        "y": 236.41216029155507
+      },
+      "data": {
+        "id": "llmAgentflow_10",
+        "label": "Next Step Suggester",
+        "version": 1,
+        "name": "llmAgentflow",
+        "type": "LLM",
+        "color": "#64B5F6",
+        "baseClasses": [
+          "LLM"
+        ],
+        "category": "Agent Flows",
+        "description": "Large language models to analyze user-provided inputs and generate responses",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "llmModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "llmAgentflow_10-input-llmModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "llmMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "llmAgentflow_10-input-llmMessages-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "llmEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "llmAgentflow_10-input-llmEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "llmMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_10-input-llmMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "llmMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "llmMemoryType": "windowSize"
+            },
+            "id": "llmAgentflow_10-input-llmMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "llmMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "llmMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "llmAgentflow_10-input-llmMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "llmUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "llmEnableMemory": true
+            },
+            "id": "llmAgentflow_10-input-llmUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "llmReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "llmAgentflow_10-input-llmReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "JSON Structured Output",
+            "name": "llmStructuredOutput",
+            "description": "Instruct the LLM to give output in a JSON structured schema",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string"
+              },
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "String Array",
+                    "name": "stringArray"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Enum",
+                    "name": "enum"
+                  },
+                  {
+                    "label": "JSON Array",
+                    "name": "jsonArray"
+                  }
+                ]
+              },
+              {
+                "label": "Enum Values",
+                "name": "enumValues",
+                "type": "string",
+                "placeholder": "value1, value2, value3",
+                "description": "Enum values. Separated by comma",
+                "optional": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "enum"
+                }
+              },
+              {
+                "label": "JSON Schema",
+                "name": "jsonSchema",
+                "type": "code",
+                "placeholder": "{\n    \"answer\": {\n        \"type\": \"string\",\n        \"description\": \"Value of the answer\"\n    },\n    \"reason\": {\n        \"type\": \"string\",\n        \"description\": \"Reason for the answer\"\n    },\n    \"optional\": {\n        \"type\": \"boolean\"\n    },\n    \"count\": {\n        \"type\": \"number\"\n    },\n    \"children\": {\n        \"type\": \"array\",\n        \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"value\": {\n                    \"type\": \"string\",\n                    \"description\": \"Value of the children's answer\"\n                }\n            }\n        }\n    }\n}",
+                "description": "JSON schema for the structured output",
+                "optional": true,
+                "hideCodeExecute": true,
+                "show": {
+                  "llmStructuredOutput[$index].type": "jsonArray"
+                }
+              },
+              {
+                "label": "Description",
+                "name": "description",
+                "type": "string",
+                "placeholder": "Description of the key"
+              }
+            ],
+            "id": "llmAgentflow_10-input-llmStructuredOutput-array",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "llmUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "llmAgentflow_10-input-llmUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "llmModel": "chatOpenAI",
+          "llmMessages": [
+            {
+              "role": "system",
+              "content": "<p>You are a Troubleshooting Lead. Your goal is to help the student organize their diagnostic process.</p><p>Rules:</p><p>Never reveal the answer.</p><p>Prioritize Action: Suggest a logical next step in an engineering workflow</p><p>Contextual Flow: If the student has identified a symptom, suggest they look for the cause. If they have a hypothesis, suggest how they might verify it using the provided case study data.</p><p>Keep it Brief: Your role is to point the way, not to do the work. Give them a clear \"compass heading.\"</p><p>If the student may be heading in an incorrect direction, suggest them to think about other possibilities and list them for the user</p>"
+            }
+          ],
+          "llmEnableMemory": true,
+          "llmMemoryType": "allMessages",
+          "llmUserMessage": "<p>Student Question:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"question\" data-label=\"question\">{{ question }}</span> </p><p>Tutor Analysis:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.tutor_analysis\" data-label=\"$flow.state.tutor_analysis\">{{ $flow.state.tutor_analysis }}</span> </p><p>Strategy:</p><p><span class=\"variable\" data-type=\"mention\" data-id=\"$flow.state.pedagogy_strategy\" data-label=\"$flow.state.pedagogy_strategy\">{{ $flow.state.pedagogy_strategy }}</span> </p>",
+          "llmReturnResponseAs": "userMessage",
+          "llmStructuredOutput": "",
+          "llmUpdateState": "",
+          "llmModelConfig": {
+            "cache": "",
+            "modelName": "gpt-4o-mini",
+            "temperature": 0.9,
+            "streaming": true,
+            "maxTokens": "",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "proxyUrl": "",
+            "baseOptions": "",
+            "allowImageUploads": true,
+            "imageResolution": "low",
+            "reasoning": "",
+            "llmModel": "chatOpenAI"
+          },
+          "undefined": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "llmAgentflow_10-output-llmAgentflow",
+            "label": "LLM",
+            "name": "llmAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 206,
+      "height": 72,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 2067.110477498318,
+        "y": 236.41216029155507
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "startAgentflow_0",
+      "sourceHandle": "startAgentflow_0-output-startAgentflow",
+      "target": "llmAgentflow_0",
+      "targetHandle": "llmAgentflow_0",
+      "data": {
+        "sourceColor": "#7EE787",
+        "targetColor": "#64B5F6",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "startAgentflow_0-startAgentflow_0-output-startAgentflow-llmAgentflow_0-llmAgentflow_0"
+    },
+    {
+      "source": "llmAgentflow_0",
+      "sourceHandle": "llmAgentflow_0-output-llmAgentflow",
+      "target": "llmAgentflow_1",
+      "targetHandle": "llmAgentflow_1",
+      "data": {
+        "sourceColor": "#64B5F6",
+        "targetColor": "#64B5F6",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "llmAgentflow_0-llmAgentflow_0-output-llmAgentflow-llmAgentflow_1-llmAgentflow_1"
+    },
+    {
+      "source": "llmAgentflow_1",
+      "sourceHandle": "llmAgentflow_1-output-llmAgentflow",
+      "target": "llmAgentflow_2",
+      "targetHandle": "llmAgentflow_2",
+      "data": {
+        "sourceColor": "#64B5F6",
+        "targetColor": "#64B5F6",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "llmAgentflow_1-llmAgentflow_1-output-llmAgentflow-llmAgentflow_2-llmAgentflow_2"
+    },
+    {
+      "source": "llmAgentflow_2",
+      "sourceHandle": "llmAgentflow_2-output-llmAgentflow",
+      "target": "conditionAgentflow_0",
+      "targetHandle": "conditionAgentflow_0",
+      "data": {
+        "sourceColor": "#64B5F6",
+        "targetColor": "#FFB938",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "llmAgentflow_2-llmAgentflow_2-output-llmAgentflow-conditionAgentflow_0-conditionAgentflow_0"
+    },
+    {
+      "source": "conditionAgentflow_0",
+      "sourceHandle": "conditionAgentflow_0-output-0",
+      "target": "llmAgentflow_3",
+      "targetHandle": "llmAgentflow_3",
+      "data": {
+        "sourceColor": "#FFB938",
+        "targetColor": "#64B5F6",
+        "edgeLabel": "0",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "conditionAgentflow_0-conditionAgentflow_0-output-0-llmAgentflow_3-llmAgentflow_3"
+    },
+    {
+      "source": "conditionAgentflow_0",
+      "sourceHandle": "conditionAgentflow_0-output-1",
+      "target": "llmAgentflow_4",
+      "targetHandle": "llmAgentflow_4",
+      "data": {
+        "sourceColor": "#FFB938",
+        "targetColor": "#64B5F6",
+        "edgeLabel": "1",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "conditionAgentflow_0-conditionAgentflow_0-output-1-llmAgentflow_4-llmAgentflow_4"
+    },
+    {
+      "source": "conditionAgentflow_0",
+      "sourceHandle": "conditionAgentflow_0-output-2",
+      "target": "llmAgentflow_5",
+      "targetHandle": "llmAgentflow_5",
+      "data": {
+        "sourceColor": "#FFB938",
+        "targetColor": "#64B5F6",
+        "edgeLabel": "2",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "conditionAgentflow_0-conditionAgentflow_0-output-2-llmAgentflow_5-llmAgentflow_5"
+    },
+    {
+      "source": "llmAgentflow_3",
+      "sourceHandle": "llmAgentflow_3-output-llmAgentflow",
+      "target": "llmAgentflow_6",
+      "targetHandle": "llmAgentflow_6",
+      "data": {
+        "sourceColor": "#64B5F6",
+        "targetColor": "#64B5F6",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "llmAgentflow_3-llmAgentflow_3-output-llmAgentflow-llmAgentflow_6-llmAgentflow_6"
+    },
+    {
+      "source": "llmAgentflow_4",
+      "sourceHandle": "llmAgentflow_4-output-llmAgentflow",
+      "target": "llmAgentflow_6",
+      "targetHandle": "llmAgentflow_6",
+      "data": {
+        "sourceColor": "#64B5F6",
+        "targetColor": "#64B5F6",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "llmAgentflow_4-llmAgentflow_4-output-llmAgentflow-llmAgentflow_6-llmAgentflow_6"
+    },
+    {
+      "source": "llmAgentflow_5",
+      "sourceHandle": "llmAgentflow_5-output-llmAgentflow",
+      "target": "llmAgentflow_6",
+      "targetHandle": "llmAgentflow_6",
+      "data": {
+        "sourceColor": "#64B5F6",
+        "targetColor": "#64B5F6",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "llmAgentflow_5-llmAgentflow_5-output-llmAgentflow-llmAgentflow_6-llmAgentflow_6"
+    },
+    {
+      "source": "llmAgentflow_6",
+      "sourceHandle": "llmAgentflow_6-output-llmAgentflow",
+      "target": "conditionAgentflow_1",
+      "targetHandle": "conditionAgentflow_1",
+      "data": {
+        "sourceColor": "#64B5F6",
+        "targetColor": "#FFB938",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "llmAgentflow_6-llmAgentflow_6-output-llmAgentflow-conditionAgentflow_1-conditionAgentflow_1"
+    },
+    {
+      "source": "conditionAgentflow_1",
+      "sourceHandle": "conditionAgentflow_1-output-0",
+      "target": "llmAgentflow_9",
+      "targetHandle": "llmAgentflow_9",
+      "data": {
+        "sourceColor": "#FFB938",
+        "targetColor": "#64B5F6",
+        "edgeLabel": "0",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "conditionAgentflow_1-conditionAgentflow_1-output-0-llmAgentflow_9-llmAgentflow_9"
+    },
+    {
+      "source": "conditionAgentflow_1",
+      "sourceHandle": "conditionAgentflow_1-output-3",
+      "target": "llmAgentflow_10",
+      "targetHandle": "llmAgentflow_10",
+      "data": {
+        "sourceColor": "#FFB938",
+        "targetColor": "#64B5F6",
+        "edgeLabel": "3",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "conditionAgentflow_1-conditionAgentflow_1-output-3-llmAgentflow_10-llmAgentflow_10"
+    },
+    {
+      "source": "conditionAgentflow_1",
+      "sourceHandle": "conditionAgentflow_1-output-1",
+      "target": "llmAgentflow_8",
+      "targetHandle": "llmAgentflow_8",
+      "data": {
+        "sourceColor": "#FFB938",
+        "targetColor": "#64B5F6",
+        "edgeLabel": "1",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "conditionAgentflow_1-conditionAgentflow_1-output-1-llmAgentflow_8-llmAgentflow_8"
+    },
+    {
+      "source": "conditionAgentflow_1",
+      "sourceHandle": "conditionAgentflow_1-output-2",
+      "target": "llmAgentflow_7",
+      "targetHandle": "llmAgentflow_7",
+      "data": {
+        "sourceColor": "#FFB938",
+        "targetColor": "#64B5F6",
+        "edgeLabel": "2",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "conditionAgentflow_1-conditionAgentflow_1-output-2-llmAgentflow_7-llmAgentflow_7"
+    }
+  ]
+}
